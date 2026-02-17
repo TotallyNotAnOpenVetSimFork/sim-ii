@@ -70,9 +70,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 			array('value' => 'normaal', 'name' => 'Normaal capnogram'),
 			array('value' => 'geen', 'name' => 'Geen plateau'),
 			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties'),
-			array('value' => 'tegenademen', 'name' => ' ‘cleft’plateau; tegenademen'),
+			array('value' => 'tegenademen', 'name' => '‘cleft’plateau; tegenademen'),
 			array('value' => 'haaienvin', 'name' => 'Haaienvin'),
-		)		
+		);	
 		
 		static public function getECGDropDown($currentECG) {
 /*
@@ -124,6 +124,17 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 				';
 			}
 			return $pulseContent;
+		}
+
+		static public function getRespRhythmDropDown($currentRespRhythm) {
+			$respRhythmContent = '';
+			foreach(self::$respRhythmList as $respRhythmArray) {
+				$selectContent = ($currentRespRhythm == $respRhythmArray['value']) ? ' selected="selected"' : '';
+				$respRhythmContent .= '
+					<option value="' . $respRhythmArray['value'] . '"' . $selectContent . '>' . $respRhythmArray['name'] . '</option>
+				';
+			}
+			return $respRhythmContent;
 		}
 		
 		static public function getVFIBAmplitudeDropDown($currentAmplitude) {

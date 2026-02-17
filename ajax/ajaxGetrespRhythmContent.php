@@ -31,7 +31,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 		echo json_encode($returnVal);
 		exit();
 	}
-
+	
+	// ecg waveforms
+	
+	$currentRhythm = dbClass::valuesFromPost('currentRhythm');
+	// generate ecg dropdown
+	
 	$content = '
 		<h1 id="modal-title">Set Resp Rhythm</h1>
 
@@ -39,7 +44,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 		<div class="control-modal-div heart-rhythm ecg clearer">
 			<p class="modal-section-title">Select ECG</p>
 			<select class="ecg-select modal-select">
-				' . controls::getECGDropDown($currentECG) . '
+				' . controls::getRespRhythmDropDown($currentRhythm) . '
 			</select>
 		</div>		
 	
@@ -68,7 +73,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 				' . controls::getTransferDropDown() . '
 			</select>
 		</div>
-
+		
 		<hr class="modal-divider" />
 		<div class="control-modal-div">
 			<button class="red-button modal-button apply">Apply</button>

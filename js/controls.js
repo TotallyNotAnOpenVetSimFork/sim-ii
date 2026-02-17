@@ -297,11 +297,7 @@ See gpl.html
 				
 				// set controls and update new value
 				controls.awRR.slideBar.slider("refresh");
-				simmgr.sendChange( { 'set:respiration:rate' : rate, 'set:respiration:transfer_time' : time } );
-			},
-
-			setRespRhythmModal: function() {
-		
+				simmgr.sendChange( { 'set:respiration:rate' : rate, 'set:respiration:transfer_time' : time, 'set:respiration:rhythm': $('select.ecg-select option:selected').val(), } );
 			},
 
 			setSynch: function() {
@@ -516,6 +512,7 @@ See gpl.html
 		},
 		
 		etCO2: {
+			respRhythm: '',
 			value: 34,
 			minValue: 0,
 			maxValue: 100,
