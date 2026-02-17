@@ -38,11 +38,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 	// generate ecg dropdown
 	
 	$content = '
-		<h1 id="modal-title">Set Resp Rhythm</h1>
+		<h1 id="modal-title">Set etCO2</h1>
 
 		<hr class="modal-divider clearer" />
 		<div class="control-modal-div heart-rhythm ecg clearer">
-			<p class="modal-section-title">Select ECG</p>
+			<p class="modal-section-title">Select capnogram</p>
 			<select class="ecg-select modal-select">
 				' . controls::getRespRhythmDropDown($currentRhythm) . '
 			</select>
