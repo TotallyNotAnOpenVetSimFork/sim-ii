@@ -92,7 +92,6 @@ var simmgr = {
 					simmgr.respResponse.inhalation_duration = response.respiration.inhalation_duration;
 					simmgr.respResponse.exhalation_duration = response.respiration.exhalation_duration;
 					simmgr.respResponse.rate = response.respiration.rate;
-					simmgr.respResponse.rhythm = response.respiration.rhythm;
 					if( controls.manualRespiration.inProgress == false ) {
 						controls.awRR.setSynch();
 					}
@@ -743,7 +742,8 @@ console.log('defib: here');
 						}
 					}
 					if(typeof(response.respiration.rhythm) != "undefined") {
-						controls.respRhythm.value = response.respiration.rhythm;
+						console.log("respiration rhythm: " + response.respiration.rhythm);
+						controls.etCO2.respRhythm = response.respiration.rhythm;
 					}
 					// spo2
 					if(typeof(response.respiration.spo2) != "undefined") {

@@ -67,7 +67,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 		);		
 		// note: hier worden de waarden voor de verschillende ademhalingsritmes gedefinieerd. De waarde is de naam van het ritme, en de naam is wat er in de dropdown getoond wordt
 		private static $respRhythmList = array(
-			array('value' => 'normaal', 'name' => 'Normaal capnogram'),
+			array('value' => 'normal', 'name' => 'Normaal capnogram'),
 			array('value' => 'geen', 'name' => 'Geen plateau'),
 			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties'),
 			array('value' => 'tegenademen', 'name' => '‘cleft’plateau; tegenademen'),

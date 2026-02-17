@@ -237,31 +237,6 @@ See gpl.html
 						$('.strip-value.new').val(parseInt($('.strip-value.new').val()) + 1);
 						controls.etCO2.validateNewValue();
 					});
-						modal.showModal(response);
-						modal.bindCloseModal();
-
-						modal.initSingleSlider('awRR');
-						
-						$('.strip-value').val(controls.awRR.modalRate);
-						
-						// bind apply button
-						$('.modal-button.apply').click(function() {
-							controls.awRR.setRespRate();
-							modal.closeModal();
-						});
-						
-						// bind change in new value
-						$('.strip-value.new').change(controls.awRR.validateNewValue);
-						
-						// bind increment and decrement
-						$('.control-incr-decr-rate.decr-rate').click(function() {
-							$('.strip-value.new').val(parseInt($('.strip-value.new').val()) - 1);
-							controls.awRR.validateNewValue();
-						});
-						$('.control-incr-decr-rate.incr-rate').click(function() {
-							$('.strip-value.new').val(parseInt($('.strip-value.new').val()) + 1);
-							controls.awRR.validateNewValue();
-						});
 					}
 				}
 			});
