@@ -299,7 +299,11 @@ See gpl.html
 				controls.awRR.slideBar.slider("refresh");
 				simmgr.sendChange( { 'set:respiration:rate' : rate, 'set:respiration:transfer_time' : time } );
 			},
-			
+
+			setRespRhythmModal: function() {
+		
+			},
+
 			setSynch: function() {
 // console.log('pixelCount: ' + chart.resp.pixelCount);
 // console.log('periodCount: ' + chart.resp.periodCount);
