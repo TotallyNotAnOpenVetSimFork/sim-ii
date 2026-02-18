@@ -1035,6 +1035,17 @@ See gpl.html
 
 			// Create the 'cursor' by clearing out a 10px wide section in front of the pixel
 			chart.drawCursor('resp');
+
+			// draw zero baseline segment in gray across the cleared cursor area
+			try {
+				var baselineY = chart.resp.yOffset + chart.resp.yDisplayOffset;
+				chart.resp.ctx.beginPath();
+				chart.resp.ctx.strokeStyle = '#888';
+				chart.resp.ctx.lineWidth = 1;
+				chart.resp.ctx.moveTo(chart.resp.xPos, baselineY);
+				chart.resp.ctx.lineTo(chart.resp.xPos + chart.cursorWidth, baselineY);
+				chart.resp.ctx.stroke();
+			} catch(e) {}
 			
 			
 			if(controls.manualRespiration.inProgress == true) {
@@ -1226,6 +1237,16 @@ See gpl.html
 			if((chart.resp.xPos + chart.resp.xOffsetRight) > chart.resp.width) {
 				chart.resp.xPos = chart.resp.xOffsetLeft;
 				chart.resp.ctx.fillRect(0, 0, chart.resp.xOffsetLeft, chart.resp.height);
+				// redraw baseline across left offset area after clearing
+				try {
+					var baselineY2 = chart.resp.yOffset + chart.resp.yDisplayOffset;
+					chart.resp.ctx.beginPath();
+					chart.resp.ctx.strokeStyle = '#888';
+					chart.resp.ctx.lineWidth = 1;
+					chart.resp.ctx.moveTo(0, baselineY2);
+					chart.resp.ctx.lineTo(chart.resp.xOffsetLeft, baselineY2);
+					chart.resp.ctx.stroke();
+				} catch(e) {}
 			}
 			
 			// are we at the start of a new pattern?
