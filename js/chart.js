@@ -159,7 +159,8 @@ See gpl.html
 			breathStart: false,		// flag to indicate if a new breating waveform is starting.
 			blankTimer: 0,			// timer to blank vitals ETCO2
 			rrBlankCount: 2,		// count of breath waveforms before displaying valid awRR
-			currentetCO2value: 0		// variable to hold ETCO2 value at the start of a breath waveform
+			currentetCO2value: 0,	// variable to hold ETCO2 value at the start of a breath waveform
+			respRhythmType: 'normal'	// current respiration rhythm type
 		},
 		
 		cursorWidth: 10,			// width of cursor in pixels
@@ -450,6 +451,195 @@ See gpl.html
 				56,62
 			];
 			
+			// Respiration rhythm patterns - store by type: 'normal', 'geen', 'cardiogene', 'tegenademen', 'haaienvin'
+			// NORMAL pattern (already defined above, we'll add references here)
+			chart.resp.rhythmPatterns = {
+				'normal': {
+					'high-to-low': chart.resp.rhythm['high-to-low'],
+					'low-to-high': chart.resp.rhythm['low-to-high'],
+					'high': chart.resp.rhythm['high']
+				}
+			};
+			
+			// GEEN plateau - flat top, steeper rise/fall
+			chart.resp.rhythm['geen-high-to-low'] = new Array;
+			chart.resp.rhythm['geen-high-to-low'][0] = [
+				62,61.5,60,50,35,20,8,2,0.5,0.3,0.2,0
+			];
+			chart.resp.rhythm['geen-high-to-low'][1] = [
+				62,61,59,48,32,18,6,1,0.2,0
+			];
+			chart.resp.rhythm['geen-high-to-low'][2] = [
+				62,60,55,40,20,5,0
+			];
+			chart.resp.rhythm['geen-high-to-low'][3] = [
+				62,50,25,2,0
+			];
+			chart.resp.rhythm['geen-high-to-low'][4] = [
+				30
+			];
+			
+			chart.resp.rhythm['geen-low-to-high'] = new Array;
+			chart.resp.rhythm['geen-low-to-high'][0] = [
+				0.1,0.3,0.8,2,5,10,18,30,40,50,58,60,61,61.5,62
+			];
+			chart.resp.rhythm['geen-low-to-high'][1] = [
+				0.2,0.5,1.5,4,8,15,28,42,55,60,62,62
+			];
+			chart.resp.rhythm['geen-low-to-high'][2] = [
+				0.5,1.5,5,15,35,50,62
+			];
+			chart.resp.rhythm['geen-low-to-high'][3] = [
+				2,12,35,58,62
+			];
+			chart.resp.rhythm['geen-low-to-high'][4] = [
+				30
+			];
+			
+			chart.resp.rhythm['geen-high'] = new Array;
+			chart.resp.rhythm['geen-high'][0] = [62,62];
+			chart.resp.rhythm['geen-high'][1] = [62,62];
+			chart.resp.rhythm['geen-high'][2] = [62,62];
+			chart.resp.rhythm['geen-high'][3] = [62,62];
+			chart.resp.rhythm['geen-high'][4] = [62];
+			
+			chart.resp.rhythmPatterns['geen'] = {
+				'high-to-low': chart.resp.rhythm['geen-high-to-low'],
+				'low-to-high': chart.resp.rhythm['geen-low-to-high'],
+				'high': chart.resp.rhythm['geen-high']
+			};
+			
+			// CARDIOGENE oscillations - small ripples during exhalation
+			chart.resp.rhythm['cardiogene-high-to-low'] = new Array;
+			chart.resp.rhythm['cardiogene-high-to-low'][0] = [
+				62,60.5,58,48,35,20,8,2,0.5,0.3,0.2,0
+			];
+			chart.resp.rhythm['cardiogene-high-to-low'][1] = [
+				62,59.5,56,44,28,12,3,0
+			];
+			chart.resp.rhythm['cardiogene-high-to-low'][2] = [
+				62,58,50,35,15,2,0
+			];
+			chart.resp.rhythm['cardiogene-high-to-low'][3] = [
+				62,48,20,0
+			];
+			chart.resp.rhythm['cardiogene-high-to-low'][4] = [30];
+			
+			chart.resp.rhythm['cardiogene-low-to-high'] = new Array;
+			chart.resp.rhythm['cardiogene-low-to-high'][0] = [
+				0.1,0.5,1.2,3,6,12,22,35,45,52,58,60,61,61.5,62
+			];
+			chart.resp.rhythm['cardiogene-low-to-high'][1] = [
+				0.2,0.8,2,5,10,18,32,48,58,61,62
+			];
+			chart.resp.rhythm['cardiogene-low-to-high'][2] = [
+				0.5,2,6,18,38,55,62
+			];
+			chart.resp.rhythm['cardiogene-low-to-high'][3] = [
+				2,15,40,60,62
+			];
+			chart.resp.rhythm['cardiogene-low-to-high'][4] = [30];
+			
+			chart.resp.rhythm['cardiogene-high'] = new Array;
+			chart.resp.rhythm['cardiogene-high'][0] = [62,61.5,62,61.5,62];
+			chart.resp.rhythm['cardiogene-high'][1] = [62,61.5,62,61.5,62];
+			chart.resp.rhythm['cardiogene-high'][2] = [62,61.5,62];
+			chart.resp.rhythm['cardiogene-high'][3] = [62,61.5,62];
+			chart.resp.rhythm['cardiogene-high'][4] = [62];
+			
+			chart.resp.rhythmPatterns['cardiogene'] = {
+				'high-to-low': chart.resp.rhythm['cardiogene-high-to-low'],
+				'low-to-high': chart.resp.rhythm['cardiogene-low-to-high'],
+				'high': chart.resp.rhythm['cardiogene-high']
+			};
+			
+			// TEGENADEMEN (expiratory hold) - sawtooth pattern with plateau during exhalation
+			chart.resp.rhythm['tegenademen-high-to-low'] = new Array;
+			chart.resp.rhythm['tegenademen-high-to-low'][0] = [
+				62,62,62,61,60,58,45,25,5,1,0
+			];
+			chart.resp.rhythm['tegenademen-high-to-low'][1] = [
+				62,62,60,55,40,15,2,0
+			];
+			chart.resp.rhythm['tegenademen-high-to-low'][2] = [
+				62,62,58,42,12,0
+			];
+			chart.resp.rhythm['tegenademen-high-to-low'][3] = [
+				62,60,30,0
+			];
+			chart.resp.rhythm['tegenademen-high-to-low'][4] = [30];
+			
+			chart.resp.rhythm['tegenademen-low-to-high'] = new Array;
+			chart.resp.rhythm['tegenademen-low-to-high'][0] = [
+				0.1,0.5,1.5,4,8,15,28,40,52,60,61.5,62
+			];
+			chart.resp.rhythm['tegenademen-low-to-high'][1] = [
+				0.2,0.8,2,5,12,25,42,58,62
+			];
+			chart.resp.rhythm['tegenademen-low-to-high'][2] = [
+				0.5,2,8,22,45,62
+			];
+			chart.resp.rhythm['tegenademen-low-to-high'][3] = [
+				2,18,45,62
+			];
+			chart.resp.rhythm['tegenademen-low-to-high'][4] = [30];
+			
+			chart.resp.rhythm['tegenademen-high'] = new Array;
+			chart.resp.rhythm['tegenademen-high'][0] = [62,62,62,62];
+			chart.resp.rhythm['tegenademen-high'][1] = [62,62,62];
+			chart.resp.rhythm['tegenademen-high'][2] = [62,62];
+			chart.resp.rhythm['tegenademen-high'][3] = [62,62];
+			chart.resp.rhythm['tegenademen-high'][4] = [62];
+			
+			chart.resp.rhythmPatterns['tegenademen'] = {
+				'high-to-low': chart.resp.rhythm['tegenademen-high-to-low'],
+				'low-to-high': chart.resp.rhythm['tegenademen-low-to-high'],
+				'high': chart.resp.rhythm['tegenademen-high']
+			};
+			
+			// HAAIENVIN (shark fin) - sharp peak, rapid descent
+			chart.resp.rhythm['haaienvin-high-to-low'] = new Array;
+			chart.resp.rhythm['haaienvin-high-to-low'][0] = [
+				62,58,52,40,25,12,3,0.5,0.2,0
+			];
+			chart.resp.rhythm['haaienvin-high-to-low'][1] = [
+				62,55,45,30,10,0
+			];
+			chart.resp.rhythm['haaienvin-high-to-low'][2] = [
+				62,50,30,5,0
+			];
+			chart.resp.rhythm['haaienvin-high-to-low'][3] = [
+				62,35,0
+			];
+			chart.resp.rhythm['haaienvin-high-to-low'][4] = [30];
+			
+			chart.resp.rhythm['haaienvin-low-to-high'] = new Array;
+			chart.resp.rhythm['haaienvin-low-to-high'][0] = [
+				0.1,2,6,15,28,42,55,60,61.5,62
+			];
+			chart.resp.rhythm['haaienvin-low-to-high'][1] = [
+				0.2,2.5,8,20,40,55,62
+			];
+			chart.resp.rhythm['haaienvin-low-to-high'][2] = [
+				0.5,5,18,42,62
+			];
+			chart.resp.rhythm['haaienvin-low-to-high'][3] = [
+				2,25,55,62
+			];
+			chart.resp.rhythm['haaienvin-low-to-high'][4] = [30];
+			
+			chart.resp.rhythm['haaienvin-high'] = new Array;
+			chart.resp.rhythm['haaienvin-high'][0] = [62];
+			chart.resp.rhythm['haaienvin-high'][1] = [62];
+			chart.resp.rhythm['haaienvin-high'][2] = [62];
+			chart.resp.rhythm['haaienvin-high'][3] = [62];
+			chart.resp.rhythm['haaienvin-high'][4] = [62];
+			
+			chart.resp.rhythmPatterns['haaienvin'] = {
+				'high-to-low': chart.resp.rhythm['haaienvin-high-to-low'],
+				'low-to-high': chart.resp.rhythm['haaienvin-low-to-high'],
+				'high': chart.resp.rhythm['haaienvin-high']
+			};
 			chart.resp.manualBreathPattern = [	// approximate 300 msec waveform
 				0.110304233,0.110304233,0.110304233,0.110304233,0.110304233,
 				0.110304233,0.110304233,0.110304233,0.110304233,0.110304233,
@@ -1224,5 +1414,36 @@ See gpl.html
 				y -= (chart.ekg.noiseMax / 2);
 			}
 			return y;
+		},
+		
+		// Switch respiration rhythm pattern based on type
+		setRespRhythmPattern: function(rhythmType) {
+			if(typeof rhythmType === 'undefined' || rhythmType === null || rhythmType === '') {
+				rhythmType = 'normal';
+			}
+			
+			chart.resp.respRhythmType = rhythmType;
+			
+			// Switch the rhythm arrays based on type
+			if(typeof chart.resp.rhythmPatterns[rhythmType] !== 'undefined') {
+				chart.resp.rhythm['high-to-low'] = chart.resp.rhythmPatterns[rhythmType]['high-to-low'];
+				chart.resp.rhythm['low-to-high'] = chart.resp.rhythmPatterns[rhythmType]['low-to-high'];
+				chart.resp.rhythm['high'] = chart.resp.rhythmPatterns[rhythmType]['high'];
+			} else {
+				// Default to normal if rhythm type not found
+				chart.resp.rhythm['high-to-low'] = chart.resp.rhythmPatterns['normal']['high-to-low'];
+				chart.resp.rhythm['low-to-high'] = chart.resp.rhythmPatterns['normal']['low-to-high'];
+				chart.resp.rhythm['high'] = chart.resp.rhythmPatterns['normal']['high'];
+			}
+			
+			// Update max value
+			chart.resp.max = chart.resp.rhythm['high'].max();
+			
+			// Reset pattern index
+			chart.resp.patternIndex = 0;
+			chart.resp.rhythmIndex = 'low';
+			
+			// Recalculate ETCO2 display max with new pattern
+			chart.getETC02MaxDisplay();
 		}
 	}

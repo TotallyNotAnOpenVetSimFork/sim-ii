@@ -705,6 +705,13 @@ console.log('defib: here');
 				}
 				/************ respiration **************/
 				if(typeof(response.respiration) != "undefined" ) {
+					// respiration rhythm
+					if(typeof(response.respiration.rhythm) != "undefined") {
+						if(response.respiration.rhythm != chart.resp.respRhythmType) {
+							chart.setRespRhythmPattern(response.respiration.rhythm);
+						}
+					}
+					
 					// awRR
 					if(typeof(response.respiration.awRR) != "undefined") {
 						simmgr.respResponse = response.respiration;
