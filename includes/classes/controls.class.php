@@ -40,7 +40,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 		private static $ecgList = array(
 			array('value' => 'asystole', 'type' => 'no-pulse', 'name' => 'Asystole'),
 			array('value' => 'afib', 'type' => 'pulse', 'name' => 'Atrial Fibrillation'),
-			array('value' => 'vtach3', 'type' => 'pulse', 'name' => 'R on T'),
+			//array('value' => 'vtach3', 'type' => 'pulse', 'name' => 'R on T'),
 			array('value' => 'sinus', 'type' => 'pulse', 'name' => 'Sinus Rhythm'),
 			array('value' => 'vfib', 'type' => 'no-pulse', 'name' => 'Ventricular Fibrillation'),
 			array('value' => 'vtach1', 'type' => 'pulse', 'name' => 'Ventricular Tarchycardia 1'),
