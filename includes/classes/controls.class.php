@@ -132,8 +132,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 			$respRhythmContent = '';
 			foreach(self::$respRhythmList as $respRhythmArray) {
 				$selectContent = ($currentRespRhythm == $respRhythmArray['value']) ? ' selected="selected"' : '';
+				// include the image filename as a data attribute so JS can update the preview
 				$respRhythmContent .= '
-					<option value="' . $respRhythmArray['value'] . '"' . $selectContent . '>' . $respRhythmArray['name'] . '. </option>
+					<option value="' . $respRhythmArray['value'] . '"' . $selectContent . ' data-image="' . $respRhythmArray['image'] . '">' . $respRhythmArray['name'] . '. </option>
 				';
 			}
 			return $respRhythmContent;

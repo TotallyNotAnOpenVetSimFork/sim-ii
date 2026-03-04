@@ -237,6 +237,14 @@ See gpl.html
 						$('.strip-value.new').val(parseInt($('.strip-value.new').val()) + 1);
 						controls.etCO2.validateNewValue();
 					});
+
+					// when the dropdown changes, update preview image
+					$('select.ecg-select').change(function() {
+						var img = $(this).find(':selected').data('image');
+						if(img !== undefined) {
+							$('img.modal-image').attr('src', 'images/' + img);
+						}
+					});
 					}
 				}
 			});
