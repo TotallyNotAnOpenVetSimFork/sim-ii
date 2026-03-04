@@ -70,10 +70,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 		// De waarde wordt gebruikt in de code om te bepalen welk ritme er getoond moet worden op het scherm en welke waarden er voor etCO2 moeten worden gebruikt.
 		private static $respRhythmList = array(
 			array('value' => 'normal', 'name' => 'Normaal capnogram', 'image' =>'normaal_capnogram.png'),
-			array('value' => 'geen', 'name' => 'Geen plateau', 'image' => ''),
-			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties', 'image' => ''),
-			array('value' => 'tegenademen', 'name' => 'cleftplateau; tegenademen', 'image' => ''),
-			array('value' => 'haaienvin', 'name' => 'Haaienvin', 'image' => ''),
+			array('value' => 'geen', 'name' => 'Geen plateau', 'image' => 'Geen_plateau_image.png'),
+			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties', 'image' => 'Cardiogene_oscilaties_image.png'),
+			array('value' => 'tegenademen', 'name' => 'cleftplateau; tegenademen', 'image' => 'cleft_plateau_image.png'),
+			array('value' => 'haaienvin', 'name' => 'Haaienvin', 'image' => 'Haaienvin_image.png'),
 		);	
 		
 		static public function getECGDropDown($currentECG) {
@@ -132,8 +132,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 			$respRhythmContent = '';
 			foreach(self::$respRhythmList as $respRhythmArray) {
 				$selectContent = ($currentRespRhythm == $respRhythmArray['value']) ? ' selected="selected"' : '';
+				// include the image filename as a data attribute so JS can update the preview
 				$respRhythmContent .= '
-					<option value="' . $respRhythmArray['value'] . '"' . $selectContent . '>' . $respRhythmArray['name'] . '. </option>
+					<option value="' . $respRhythmArray['value'] . '"' . $selectContent . ' data-image="' . $respRhythmArray['image'] . '">' . $respRhythmArray['name'] . '. </option>
 				';
 			}
 			return $respRhythmContent;
