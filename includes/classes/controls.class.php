@@ -72,7 +72,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 			array('value' => 'normal', 'name' => 'Normaal capnogram', 'image' =>'normaal_capnogram.png'),
 			array('value' => 'geen', 'name' => 'Geen plateau', 'image' => 'Geen_plateau_image.png'),
 			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties', 'image' => 'Cardiogene_oscilaties_image.png'),
-			array('value' => 'tegenademen', 'name' => 'cleftplateau; tegenademen', 'image' => 'Tegenademen_image.png'),
+			array('value' => 'tegenademen', 'name' => 'cleftplateau; tegenademen', 'image' => 'cleft_plateau_image.png'),
 			array('value' => 'haaienvin', 'name' => 'Haaienvin', 'image' => 'Haaienvin_image.png'),
 		);	
 		
