@@ -46,7 +46,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 			<select class="ecg-select modal-select">
 				' . controls::getRespRhythmDropDown($currentRhythm) . '
 			</select>
-				<img class="ecg-image" src="images/' . controls::getRespRhythmImage($currentRhythm) . '">
+			<img class="modal-image" src="images/' . controls::getRespRhythmImage($currentRhythm) . '">
 		</div>		
 	
 

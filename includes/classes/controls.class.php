@@ -70,10 +70,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 		// De waarde wordt gebruikt in de code om te bepalen welk ritme er getoond moet worden op het scherm en welke waarden er voor etCO2 moeten worden gebruikt.
 		private static $respRhythmList = array(
 			array('value' => 'normal', 'name' => 'Normaal capnogram', 'image' =>'normaal_capnogram.png'),
-			array('value' => 'geen', 'name' => 'Geen plateau', 'image' => ''),
-			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties', 'image' => ''),
-			array('value' => 'tegenademen', 'name' => 'cleftplateau; tegenademen', 'image' => ''),
-			array('value' => 'haaienvin', 'name' => 'Haaienvin', 'image' => ''),
+			array('value' => 'geen', 'name' => 'Geen plateau', 'image' => 'Geen_plateau_image.png'),
+			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties', 'image' => 'Cardiogene_oscilaties_image.png'),
+			array('value' => 'tegenademen', 'name' => 'cleftplateau; tegenademen', 'image' => 'Tegenademen_image.png'),
+			array('value' => 'haaienvin', 'name' => 'Haaienvin', 'image' => 'Haaienvin_image.png'),
 		);	
 		
 		static public function getECGDropDown($currentECG) {
