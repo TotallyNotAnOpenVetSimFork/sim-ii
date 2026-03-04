@@ -65,13 +65,15 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 			array('value' => 'med', 'name' => 'Medium'),
 			array('value' => 'high', 'name' => 'High')
 		);		
-		// note: hier worden de waarden voor de verschillende ademhalingsritmes gedefinieerd. De waarde is de naam van het ritme, en de naam is wat er in de dropdown getoond wordt
+		// note: hier worden de waarden voor de verschillende ademhalingsritmes gedefinieerd. De waarde is de naam van het ritme,
+		// en de naam is wat er in de dropdown getoond wordt samen met een plaatje van het capnogram.
+		// De waarde wordt gebruikt in de code om te bepalen welk ritme er getoond moet worden op het scherm en welke waarden er voor etCO2 moeten worden gebruikt.
 		private static $respRhythmList = array(
-			array('value' => 'normal', 'name' => 'Normaal capnogram'),
-			array('value' => 'geen', 'name' => 'Geen plateau'),
-			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties'),
-			array('value' => 'tegenademen', 'name' => '‘cleft’plateau; tegenademen'),
-			array('value' => 'haaienvin', 'name' => 'Haaienvin'),
+			array('value' => 'normal', 'name' => 'Normaal capnogram', 'image' =>'normaal_capnogram.png'),
+			array('value' => 'geen', 'name' => 'Geen plateau', 'image' => ''),
+			array('value' => 'cardiogene', 'name' => 'Cardiogene oscilaties', 'image' => ''),
+			array('value' => 'tegenademen', 'name' => 'cleftplateau; tegenademen', 'image' => ''),
+			array('value' => 'haaienvin', 'name' => 'Haaienvin', 'image' => ''),
 		);	
 		
 		static public function getECGDropDown($currentECG) {
@@ -131,10 +133,18 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 			foreach(self::$respRhythmList as $respRhythmArray) {
 				$selectContent = ($currentRespRhythm == $respRhythmArray['value']) ? ' selected="selected"' : '';
 				$respRhythmContent .= '
-					<option value="' . $respRhythmArray['value'] . '"' . $selectContent . '>' . $respRhythmArray['name'] . '</option>
+					<option value="' . $respRhythmArray['value'] . '"' . $selectContent . '>' . $respRhythmArray['name'] . '. </option>
 				';
 			}
 			return $respRhythmContent;
+		}
+		static public function getRespRhythmImage($currentRespRhythm) {
+			foreach(self::$respRhythmList as $respRhythmArray) {
+				if($currentRespRhythm == $respRhythmArray['value']) {
+					return $respRhythmArray['image'];
+				}
+			}
+			return '';
 		}
 		
 		static public function getVFIBAmplitudeDropDown($currentAmplitude) {
