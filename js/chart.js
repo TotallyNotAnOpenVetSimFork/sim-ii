@@ -1040,7 +1040,7 @@ See gpl.html
 			try {
 				var baselineY = chart.resp.yOffset + chart.resp.yDisplayOffset;
 				chart.resp.ctx.beginPath();
-				chart.resp.ctx.strokeStyle = '#888';
+				chart.resp.ctx.strokeStyle = '#dadada';
 				chart.resp.ctx.lineWidth = 1;
 				chart.resp.ctx.moveTo(chart.resp.xPos, baselineY);
 				chart.resp.ctx.lineTo(chart.resp.xPos + chart.cursorWidth, baselineY);
@@ -1241,7 +1241,7 @@ See gpl.html
 				try {
 					var baselineY2 = chart.resp.yOffset + chart.resp.yDisplayOffset;
 					chart.resp.ctx.beginPath();
-					chart.resp.ctx.strokeStyle = '#888';
+					chart.resp.ctx.strokeStyle = '#bdbdbd';
 					chart.resp.ctx.lineWidth = 1;
 					chart.resp.ctx.moveTo(0, baselineY2);
 					chart.resp.ctx.lineTo(chart.resp.xOffsetLeft, baselineY2);
