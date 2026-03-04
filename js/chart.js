@@ -481,7 +481,9 @@ See gpl.html
 			
 			chart.resp.rhythm['geen-low-to-high'] = new Array;
 			chart.resp.rhythm['geen-low-to-high'][0] = [
-				0.1,0.3,0.8,2,5,10,18,30,40,50,58,60,61,61.5,62
+				0.110304316,0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
+				46.80024109,48.49503321,49.89641132,50.9500952,51.83944314,
 			];
 			chart.resp.rhythm['geen-low-to-high'][1] = [
 				0.2,0.5,1.5,4,8,15,28,42,55,60,62,62
@@ -497,10 +499,10 @@ See gpl.html
 			];
 			
 			chart.resp.rhythm['geen-high'] = new Array;
-			chart.resp.rhythm['geen-high'][0] = [62,62];
-			chart.resp.rhythm['geen-high'][1] = [62,62];
-			chart.resp.rhythm['geen-high'][2] = [62,62];
-			chart.resp.rhythm['geen-high'][3] = [62,62];
+			chart.resp.rhythm['geen-high'][0] = [62,62,62,62,62,62,62,62,62];
+			chart.resp.rhythm['geen-high'][1] = [62,62,62,62,62,62,62];
+			chart.resp.rhythm['geen-high'][2] = [62,62,62,62,62];
+			chart.resp.rhythm['geen-high'][3] = [62,62,62];
 			chart.resp.rhythm['geen-high'][4] = [62];
 			
 			chart.resp.rhythmPatterns['geen'] = {
@@ -527,25 +529,33 @@ See gpl.html
 			
 			chart.resp.rhythm['cardiogene-low-to-high'] = new Array;
 			chart.resp.rhythm['cardiogene-low-to-high'][0] = [
-				0.1,0.5,1.2,3,6,12,22,35,45,52,58,60,61,61.5,62
+				0.110304316,0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
+				46.80024109,48.49503321,49.89641132,50.9500952,51.83944314,
 			];
 			chart.resp.rhythm['cardiogene-low-to-high'][1] = [
-				0.2,0.8,2,5,10,18,32,48,58,61,62
+				0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
+				46.80024109,48.49503321,49.89641132,50.9500952
 			];
 			chart.resp.rhythm['cardiogene-low-to-high'][2] = [
-				0.5,2,6,18,38,55,62
+				1.440832926,
+				5.909726892,24.91583508,44.30213386,
+				48.49503321,50.9500952
 			];
 			chart.resp.rhythm['cardiogene-low-to-high'][3] = [
-				2,15,40,60,62
+				12.58774301,// 37.12211491,
+				46.80024109,// 49.89641132,
+				50.9500952
 			];
 			chart.resp.rhythm['cardiogene-low-to-high'][4] = [30];
 			
 			chart.resp.rhythm['cardiogene-high'] = new Array;
-			chart.resp.rhythm['cardiogene-high'][0] = [62,61.5,62,61.5,62];
-			chart.resp.rhythm['cardiogene-high'][1] = [62,61.5,62,61.5,62];
-			chart.resp.rhythm['cardiogene-high'][2] = [62,61.5,62];
-			chart.resp.rhythm['cardiogene-high'][3] = [62,61.5,62];
-			chart.resp.rhythm['cardiogene-high'][4] = [62];
+			chart.resp.rhythm['cardiogene-high'][0] = [62,62];
+			chart.resp.rhythm['cardiogene-high'][1] = [62,62];
+			chart.resp.rhythm['cardiogene-high'][2] = [62,62];
+			chart.resp.rhythm['cardiogene-high'][3] = [62,62];
+			chart.resp.rhythm['cardiogene-high'][4] = [62,62];
 			
 			chart.resp.rhythmPatterns['cardiogene'] = {
 				'high-to-low': chart.resp.rhythm['cardiogene-high-to-low'],
@@ -556,40 +566,50 @@ See gpl.html
 			// TEGENADEMEN (expiratory hold) - sawtooth pattern with plateau during exhalation
 			chart.resp.rhythm['tegenademen-high-to-low'] = new Array;
 			chart.resp.rhythm['tegenademen-high-to-low'][0] = [
-				62,62,62,61,60,58,45,25,5,1,0
+				61.5493449,60.72807351,61.5493449,50.48641877,
+				36.93296859,24.22481363,11.00608487,2.468408594,0.877075091,
+				0.334116028,0.292495125,0
 			];
 			chart.resp.rhythm['tegenademen-high-to-low'][1] = [
-				62,62,60,55,40,15,2,0
+				61.5493449,61.5493449,50.48641877,36.93296859,24.22481363,11.00608487,2.468408594,0
 			];
 			chart.resp.rhythm['tegenademen-high-to-low'][2] = [
-				62,62,58,42,12,0
+				61.5493449,50.48641877,36.93296859,24.22481363,8.6247543,0
 			];
 			chart.resp.rhythm['tegenademen-high-to-low'][3] = [
-				62,60,30,0
+				60.72807351, 50.48641877, 24.22481363, 2.468408594, 0.334116028
 			];
 			chart.resp.rhythm['tegenademen-high-to-low'][4] = [30];
 			
 			chart.resp.rhythm['tegenademen-low-to-high'] = new Array;
 			chart.resp.rhythm['tegenademen-low-to-high'][0] = [
-				0.1,0.5,1.5,4,8,15,28,40,52,60,61.5,62
+				0.110304316,0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
+				46.80024109,48.49503321,49.89641132,50.9500952,51.83944314,
 			];
 			chart.resp.rhythm['tegenademen-low-to-high'][1] = [
-				0.2,0.8,2,5,12,25,42,58,62
+				0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
+				46.80024109,48.49503321,49.89641132,50.9500952
 			];
 			chart.resp.rhythm['tegenademen-low-to-high'][2] = [
-				0.5,2,8,22,45,62
+				1.440832926,
+				5.909726892,24.91583508,44.30213386,
+				48.49503321,50.9500952
 			];
 			chart.resp.rhythm['tegenademen-low-to-high'][3] = [
-				2,18,45,62
+				12.58774301,// 37.12211491,
+				46.80024109,// 49.89641132,
+				50.9500952
 			];
 			chart.resp.rhythm['tegenademen-low-to-high'][4] = [30];
 			
 			chart.resp.rhythm['tegenademen-high'] = new Array;
-			chart.resp.rhythm['tegenademen-high'][0] = [62,62,62,62];
-			chart.resp.rhythm['tegenademen-high'][1] = [62,62,62];
-			chart.resp.rhythm['tegenademen-high'][2] = [62,62];
-			chart.resp.rhythm['tegenademen-high'][3] = [62,62];
-			chart.resp.rhythm['tegenademen-high'][4] = [62];
+			chart.resp.rhythm['tegenademen-high'][0] = [62,62,62,62,62,56,50,45,59,61,62,62,62,62,62];
+			chart.resp.rhythm['tegenademen-high'][1] = [62,62,62,62,62,56,50,45,59,61,62,62,62,62,62];
+			chart.resp.rhythm['tegenademen-high'][2] = [62,62,62,54,50,45,59,61,62,62];
+			chart.resp.rhythm['tegenademen-high'][3] = [62,58,50,45,59,62];
+			chart.resp.rhythm['tegenademen-high'][4] = [62,58,48,62];
 			
 			chart.resp.rhythmPatterns['tegenademen'] = {
 				'high-to-low': chart.resp.rhythm['tegenademen-high-to-low'],
@@ -615,7 +635,9 @@ See gpl.html
 			
 			chart.resp.rhythm['haaienvin-low-to-high'] = new Array;
 			chart.resp.rhythm['haaienvin-low-to-high'][0] = [
-				0.1,2,6,15,28,42,55,60,61.5,62
+				0.110304316,0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
+				46.80024109,48.49503321,49.89641132,50.9500952,51.83944314,
 			];
 			chart.resp.rhythm['haaienvin-low-to-high'][1] = [
 				0.2,2.5,8,20,40,55,62
@@ -629,10 +651,10 @@ See gpl.html
 			chart.resp.rhythm['haaienvin-low-to-high'][4] = [30];
 			
 			chart.resp.rhythm['haaienvin-high'] = new Array;
-			chart.resp.rhythm['haaienvin-high'][0] = [62];
-			chart.resp.rhythm['haaienvin-high'][1] = [62];
-			chart.resp.rhythm['haaienvin-high'][2] = [62];
-			chart.resp.rhythm['haaienvin-high'][3] = [62];
+			chart.resp.rhythm['haaienvin-high'][0] = [62,62,];
+			chart.resp.rhythm['haaienvin-high'][1] = [62,62,];
+			chart.resp.rhythm['haaienvin-high'][2] = [62,62,];
+			chart.resp.rhythm['haaienvin-high'][3] = [62,62];
 			chart.resp.rhythm['haaienvin-high'][4] = [62];
 			
 			chart.resp.rhythmPatterns['haaienvin'] = {
@@ -1118,7 +1140,16 @@ See gpl.html
 					} else if(chart.resp.rhythmIndex == 'low' || chart.resp.rhythmIndex == 'rest'){
 						y = chart.resp.rhythm[chart.resp.rhythmIndex][0] * -1;
 					} else if (chart.resp.rhythmIndex == 'high'){
-						y = -1* (chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][0] + ((chart.resp.patternIndex/(chart.resp.length-1)) * (chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][1]-chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][0])))
+						// Check if this is the normal pattern (linear interpolation) or other patterns (coordinate array)
+						if(chart.resp.respRhythmType === 'normal') {
+							// Normal pattern: linear interpolation between two points
+							y = -1* (chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][0] + ((chart.resp.patternIndex/(chart.resp.length-1)) * (chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][1]-chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][0])))
+						} else {
+							// Other patterns (tegenademen, geen, haaienvin, etc.): use coordinate array directly
+							var coordinateArray = chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex];
+							var scaledIndex = Math.round((chart.resp.patternIndex / (chart.resp.length - 1)) * (coordinateArray.length - 1));
+							y = coordinateArray[scaledIndex] * -1;
+						}
 //console.log("y: " + y);
 //console.log("chart.displayETCO2.max * -1: " + chart.displayETCO2.max * -1);
 
