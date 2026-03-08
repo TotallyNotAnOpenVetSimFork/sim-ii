@@ -1274,7 +1274,6 @@ See gpl.html
 			
 			// increment xpos
 			chart.resp.xPos++;
-			console.log("y: " + y);
 			chart.resp.ctx.lineTo(chart.resp.xPos, y);
 			chart.resp.ctx.stroke();
 						
