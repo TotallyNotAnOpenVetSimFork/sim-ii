@@ -208,34 +208,75 @@ See gpl.html
 						modal.showModal(response);
 						modal.bindCloseModal();
 						
-					modal.initSingleSlider('etCO2');
+					// etCO2 slider - first one
+					$('.control-slider-1').attr({
+						'step': controls.etCO2.increment,
+						'min': controls.etCO2.minValue,
+						'max': controls.etCO2.maxValue
+					}).val(controls.etCO2.value);
+					
+					controls.etCO2.slideBar = $(".control-slider-1").slider({
+						create: function() {
+							$('.ui-slider').css({'margin': '0'});
+						}
+					});
 
-					$('.strip-value').val(controls.etCO2.value);
+					// CO2 Exhale slider - second one
+					$('.control-slider-2.co2exhale-slider').attr({
+						'step': controls.co2exhale.increment,
+						'min': controls.co2exhale.minValue,
+						'max': controls.co2exhale.maxValue
+					}).val(controls.co2exhale.value);
+					
+					controls.co2exhale.slideBar = $(".control-slider-2.co2exhale-slider").slider({
+						create: function() {
+							$('.ui-slider').css({'margin': '0'});
+						}
+					});
+
+					// Set current values
+					$('.strip-value.current').eq(0).val(controls.etCO2.value);
+					$('.strip-value.current.co2exhale').val(controls.co2exhale.value);
 					
 					// bind apply button
 					$('.modal-button.apply').click(function() {
-						rate = $('.strip-value.new').val();
-						time = $('.transfer-time').val();
+						var rate = $('.control-slider-1').val();
+						var co2exhale = $('.control-slider-2.co2exhale-slider').val();
+						var time = $('.transfer-time').val();
 
 						simmgr.sendChange( { 
 							'set:respiration:rhythm': $('select.ecg-select option:selected').val(),
 							'set:respiration:etco2' : rate, 
+							'set:respiration:co2exhale' : co2exhale,
 							'set:respiration:transfer_time' : time 
 						} );
 						modal.closeModal();
 					});
 					
-					// bind change in new value
-					$('.strip-value.new').change(controls.etCO2.validateNewValue);
+					// bind change in etCO2 new value
+					$('.control-slider-1').change(controls.etCO2.validateNewValue);
 					
-					// bind increment and decrement
-					$('.control-incr-decr-rate.decr-rate').click(function() {
-						$('.strip-value.new').val(parseInt($('.strip-value.new').val()) - 1);
+					// bind change in co2exhale new value
+					$('.control-slider-2.co2exhale-slider').change(controls.co2exhale.validateNewValue);
+					
+					// bind increment and decrement for etCO2 (first slider)
+					$('.control-incr-decr-rate.decr-rate:not(.co2exhale-decr)').click(function() {
+						$('.control-slider-1').val(parseInt($('.control-slider-1').val()) - 1);
 						controls.etCO2.validateNewValue();
 					});
-					$('.control-incr-decr-rate.incr-rate').click(function() {
-						$('.strip-value.new').val(parseInt($('.strip-value.new').val()) + 1);
+					$('.control-incr-decr-rate.incr-rate:not(.co2exhale-incr)').click(function() {
+						$('.control-slider-1').val(parseInt($('.control-slider-1').val()) + 1);
 						controls.etCO2.validateNewValue();
+					});
+
+					// bind increment and decrement for co2exhale (second slider)
+					$('.control-incr-decr-rate.co2exhale-decr').click(function() {
+						$('.control-slider-2.co2exhale-slider').val(parseInt($('.control-slider-2.co2exhale-slider').val()) - 1);
+						controls.co2exhale.validateNewValue();
+					});
+					$('.control-incr-decr-rate.co2exhale-incr').click(function() {
+						$('.control-slider-2.co2exhale-slider').val(parseInt($('.control-slider-2.co2exhale-slider').val()) + 1);
+						controls.co2exhale.validateNewValue();
 					});
 
 					// when the dropdown changes, update preview image

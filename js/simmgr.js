@@ -708,8 +708,12 @@ console.log('defib: here');
 					// respiration rhythm
 					if(typeof(response.respiration.rhythm) != "undefined") {
 						if(response.respiration.rhythm != chart.resp.respRhythmType) {
+							controls.etCO2.respRhythm = response.respiration.rhythm;
 							chart.setRespRhythmPattern(response.respiration.rhythm);
 						}
+					}
+					if(typeof(response.respiration.co2exhale) != "undefined") {
+						controls.co2exhale.value = response.respiration.co2exhale;
 					}
 					
 					// awRR
@@ -749,7 +753,6 @@ console.log('defib: here');
 						}
 					}
 					if(typeof(response.respiration.rhythm) != "undefined") {
-						console.log("respiration rhythm: " + response.respiration.rhythm);
 						controls.etCO2.respRhythm = response.respiration.rhythm;
 					}
 					// spo2

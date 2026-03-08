@@ -28,3 +28,13 @@
 		border: 1px solid grey;
 		width: 50px;
 	}
+		.strip-value.new.control-slider-2 {
+		float: right;
+		height: 17px;
+		padding: 0;
+		margin: 0 0px 0 10px;
+		font-size: 1em;
+		line-height: 1.3em;
+		border: 1px solid grey;
+		width: 50px;
+	}

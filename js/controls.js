@@ -593,6 +593,34 @@ console.log("ETCO2 Display Value - chart.resp.rhythmIndex: " + chart.resp.rhythm
 */				
 			}
 		},
+
+		co2exhale: {
+			value: 0,
+			minValue: 0,
+			maxValue: 30,
+			slideBar: '',
+			increment: 1,
+			
+			modalUnitsLabel: '%',
+			
+			init: function() {
+				controls.co2exhale.displayValue();
+			},
+			
+			validateNewValue: function() {
+				var newValue = parseInt($('.strip-value.new.co2exhale-slider').val());
+				if(newValue < controls.co2exhale.minValue || isNaN(newValue) == true) {
+					$('.strip-value.new.co2exhale-slider').val(controls.co2exhale.minValue);			
+				} else if(newValue > controls.co2exhale.maxValue) {
+					$('.strip-value.new.co2exhale-slider').val(controls.co2exhale.maxValue);
+				}
+				controls.co2exhale.slideBar.slider("refresh");
+			},
+			
+			displayValue: function() {
+				// co2exhale display logic here if needed
+			}
+		},
 		
 		Tperi: {
 			value: 98.0,

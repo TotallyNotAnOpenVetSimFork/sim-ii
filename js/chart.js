@@ -405,9 +405,6 @@ See gpl.html
 			chart.resp.rhythm['high-to-low'][4] = [	
 				30
 			];
-			chart.resp.rhythm['low'] = [	
-				0
-			];
 			chart.resp.rhythm['rest'] = [	
 				0,0,0
 			];
@@ -514,16 +511,16 @@ See gpl.html
 			// CARDIOGENE oscillations - small ripples during exhalation
 			chart.resp.rhythm['cardiogene-high-to-low'] = new Array;
 			chart.resp.rhythm['cardiogene-high-to-low'][0] = [
-				62,60.5,58,48,35,20,8,2,0.5,0.3,0.2,0
+			62,48,46,56,54,38,36,46,44,24,22,32,30,14,12,22,20,6,4,14,12,1
 			];
 			chart.resp.rhythm['cardiogene-high-to-low'][1] = [
-				62,59.5,56,44,28,12,3,0
+						62,48,46,56,54,38,36,46,44,24,22,32,30,14,12,22,20,6,4,14,12,1
 			];
 			chart.resp.rhythm['cardiogene-high-to-low'][2] = [
-				62,58,50,35,15,2,0
+							62,48,46,56,54,38,36,46,44,24,22,32,30,14,12,22,20,6,4,14,12,1
 			];
 			chart.resp.rhythm['cardiogene-high-to-low'][3] = [
-				62,48,20,0
+							62,48,46,56,54,38,36,46,44,24,22,32,30,14,12,22,20,6,4,14,12,1
 			];
 			chart.resp.rhythm['cardiogene-high-to-low'][4] = [30];
 			
@@ -692,7 +689,7 @@ See gpl.html
 			}
 			
 			// setup pattern length
-			chart.resp.length = chart.resp.rhythm[chart.resp.rhythmIndex].length;
+
 
 			// start the pattern
 			chart.resp.interval = setInterval(chart.drawRespPixel, chart.resp.drawInterval, "resp");
@@ -1077,7 +1074,17 @@ See gpl.html
 				} else {
 					//scale the y value to the current ETCO2
 					chart.resp.currentetCO2value = controls.etCO2.value
-					y = chart.resp.manualBreathPattern[controls.manualRespiration.manualBreathIndex] * -1 * chart.resp.currentetCO2value / controls.etCO2.maxValue;
+					var manualCoordinate = chart.resp.manualBreathPattern[controls.manualRespiration.manualBreathIndex];
+					
+					// Calculate co2exhale threshold
+					var co2exhaleHeight = (controls.co2exhale.value / 30) * (62 / 2);
+					
+					// Check if coordinate is below co2exhale threshold, if so use threshold
+					if(manualCoordinate < co2exhaleHeight) {
+						manualCoordinate = co2exhaleHeight;
+					}
+					
+					y = manualCoordinate * -1 * chart.resp.currentetCO2value / controls.etCO2.maxValue;
 //console.log("manual breath: " + y);
 					// advance to the next point in the waveform
 					controls.manualRespiration.manualBreathIndex++;
@@ -1137,7 +1144,9 @@ See gpl.html
 						y = chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][chart.resp.patternIndex] * -1 * chart.resp.rhythm['high'][chart.resp.risePatternIndex][0]/52;
 					} else if(chart.resp.rhythmIndex == 'high-to-low'){
 						y = chart.resp.rhythm[chart.resp.rhythmIndex][chart.resp.risePatternIndex][chart.resp.patternIndex] * -1;
-					} else if(chart.resp.rhythmIndex == 'low' || chart.resp.rhythmIndex == 'rest'){
+					} else if(chart.resp.rhythmIndex == 'low'){
+						y = 0;
+					} else if(chart.resp.rhythmIndex == 'rest'){
 						y = chart.resp.rhythm[chart.resp.rhythmIndex][0] * -1;
 					} else if (chart.resp.rhythmIndex == 'high'){
 						// Check if this is the normal pattern (linear interpolation) or other patterns (coordinate array)
@@ -1153,6 +1162,14 @@ See gpl.html
 //console.log("y: " + y);
 //console.log("chart.displayETCO2.max * -1: " + chart.displayETCO2.max * -1);
 
+					}
+
+					// Calculate co2exhale threshold
+					var co2exhaleHeight = (controls.co2exhale.value / 30) * (62 / 2);
+					
+					// Check if coordinate is below co2exhale threshold, if so use threshold
+					if(Math.abs(y) < co2exhaleHeight) {
+						y = -co2exhaleHeight;
 					}
 
 					//scale the y value to the current ETCO2
@@ -1257,7 +1274,7 @@ See gpl.html
 			
 			// increment xpos
 			chart.resp.xPos++;
-			
+			console.log("y: " + y);
 			chart.resp.ctx.lineTo(chart.resp.xPos, y);
 			chart.resp.ctx.stroke();
 						
@@ -1493,7 +1510,7 @@ See gpl.html
 			
 			// Reset pattern index
 			chart.resp.patternIndex = 0;
-			chart.resp.rhythmIndex = 'low';
+			chart.resp.rhythmIndex = 'rest';
 			
 			// Recalculate ETCO2 display max with new pattern
 			chart.getETC02MaxDisplay();
