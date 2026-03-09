@@ -461,16 +461,16 @@ See gpl.html
 			// GEEN plateau - flat top, steeper rise/fall
 			chart.resp.rhythm['geen-high-to-low'] = new Array;
 			chart.resp.rhythm['geen-high-to-low'][0] = [
-				62,61.5,60,50,35,20,8,2,0.5,0.3,0.2,0
+				46,36,28,20,16,10,8,2,0.5,0.3,0.2,0
 			];
 			chart.resp.rhythm['geen-high-to-low'][1] = [
-				62,61,59,48,32,18,6,1,0.2,0
+				40,36,28,20,16,10,8,2,0.5,0.3,0.2,0
 			];
 			chart.resp.rhythm['geen-high-to-low'][2] = [
-				62,60,55,40,20,5,0
+					40,36,28,20,16,10,8,2,0.5,0.3,0.2,0
 			];
 			chart.resp.rhythm['geen-high-to-low'][3] = [
-				62,50,25,2,0
+				40,36,28,20,16,10,8,2,0.5,0.3,0.2,0
 			];
 			chart.resp.rhythm['geen-high-to-low'][4] = [
 				30
@@ -483,23 +483,29 @@ See gpl.html
 				46.80024109,48.49503321,49.89641132,50.9500952,51.83944314,
 			];
 			chart.resp.rhythm['geen-low-to-high'][1] = [
-				0.2,0.5,1.5,4,8,15,28,42,55,60,62,62
+				0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
+				46.80024109,48.49503321,49.89641132,50.9500952
 			];
 			chart.resp.rhythm['geen-low-to-high'][2] = [
-				0.5,1.5,5,15,35,50,62
+				1.440832926,
+				5.909726892,24.91583508,44.30213386,
+				48.49503321,50.9500952
 			];
 			chart.resp.rhythm['geen-low-to-high'][3] = [
-				2,12,35,58,62
+				12.58774301,// 37.12211491,
+				46.80024109,// 49.89641132,
+				47.9500952
 			];
 			chart.resp.rhythm['geen-low-to-high'][4] = [
 				30
 			];
 			
 			chart.resp.rhythm['geen-high'] = new Array;
-			chart.resp.rhythm['geen-high'][0] = [62,62,62,62,62,62,62,62,62];
-			chart.resp.rhythm['geen-high'][1] = [62,62,62,62,62,62,62];
-			chart.resp.rhythm['geen-high'][2] = [62,62,62,62,62];
-			chart.resp.rhythm['geen-high'][3] = [62,62,62];
+			chart.resp.rhythm['geen-high'][0] = [54,56,60,61.0525322,61.4053262,62,60,58,54,48];
+			chart.resp.rhythm['geen-high'][1] = [54,56,60,61.0525322,61.4053262,62,60,58,54,48];
+			chart.resp.rhythm['geen-high'][2] = [54,56,60,61.0525322,61.4053262,62,60,58,54,48];
+			chart.resp.rhythm['geen-high'][3] = [54,56,60,61.0525322,61.4053262,62,60,58,54,48];
 			chart.resp.rhythm['geen-high'][4] = [62];
 			
 			chart.resp.rhythmPatterns['geen'] = {
@@ -617,41 +623,53 @@ See gpl.html
 			// HAAIENVIN (shark fin) - sharp peak, rapid descent
 			chart.resp.rhythm['haaienvin-high-to-low'] = new Array;
 			chart.resp.rhythm['haaienvin-high-to-low'][0] = [
-				62,58,52,40,25,12,3,0.5,0.2,0
+				61.5493449,60.72807351,58.85943707,50.48641877,
+				36.93296859,24.22481363,11.00608487,2.468408594,0.877075091,
+				0.334116028,0.292495125,0
+//				60,52,44,36,28,24,20,15,8
 			];
 			chart.resp.rhythm['haaienvin-high-to-low'][1] = [
-				62,55,45,30,10,0
+				61.5493449,60.72807351,58.85943707,50.48641877,
+				36.93296859,24.22481363,11.00608487,2.468408594,0.877075091,
+				0.334116028,0.292495125,0
+//				60,52,44,36,28,24,20,15,8
 			];
 			chart.resp.rhythm['haaienvin-high-to-low'][2] = [
-				62,50,30,5,0
+				61.5493449,60.72807351,58.85943707,50.48641877,
+				36.93296859,24.22481363,11.00608487,2.468408594,0.877075091,
+				0.334116028,0.292495125,0	
 			];
 			chart.resp.rhythm['haaienvin-high-to-low'][3] = [
-				62,35,0
+				60.72807351, 50.48641877, 24.22481363, 2.468408594, 0.334116028
 			];
 			chart.resp.rhythm['haaienvin-high-to-low'][4] = [30];
 			
 			chart.resp.rhythm['haaienvin-low-to-high'] = new Array;
 			chart.resp.rhythm['haaienvin-low-to-high'][0] = [
 				0.110304316,0.204757313,0.444808642,1.440832926,3.047279566,
-				5.909726892,12.58774301,24.91583508,37.12211491,44.30213386,
-				46.80024109,48.49503321,49.89641132,50.9500952,51.83944314,
+				5.909726892,12.58774301,18.91583508,22.12211491
 			];
 			chart.resp.rhythm['haaienvin-low-to-high'][1] = [
-				0.2,2.5,8,20,40,55,62
+				0.110304316,0.204757313,0.444808642,1.440832926,3.047279566,
+				5.909726892,12.58774301,18.91583508,22.12211491
 			];
 			chart.resp.rhythm['haaienvin-low-to-high'][2] = [
-				0.5,5,18,42,62
+				1.440832926,
+				5.909726892,24.91583508,44.30213386,
+				48.49503321,50.9500952
 			];
 			chart.resp.rhythm['haaienvin-low-to-high'][3] = [
-				2,25,55,62
+				12.58774301,// 37.12211491,
+				46.80024109,// 49.89641132,
+				50.9500952
 			];
 			chart.resp.rhythm['haaienvin-low-to-high'][4] = [30];
 			
 			chart.resp.rhythm['haaienvin-high'] = new Array;
-			chart.resp.rhythm['haaienvin-high'][0] = [62,62,];
-			chart.resp.rhythm['haaienvin-high'][1] = [62,62,];
-			chart.resp.rhythm['haaienvin-high'][2] = [62,62,];
-			chart.resp.rhythm['haaienvin-high'][3] = [62,62];
+			chart.resp.rhythm['haaienvin-high'][0] = [22,32,39,47,54,59,60.5325623,60.925151,62];
+			chart.resp.rhythm['haaienvin-high'][1] = [22,32,39,47,54,59,60.5325623,60.925151,62];
+			chart.resp.rhythm['haaienvin-high'][2] = [22,32,39,47,54,59,60.5325623,60.925151,62];
+			chart.resp.rhythm['haaienvin-high'][3] = [22,32,39,47,54,59,60.5325623,60.925151,62];
 			chart.resp.rhythm['haaienvin-high'][4] = [62];
 			
 			chart.resp.rhythmPatterns['haaienvin'] = {
